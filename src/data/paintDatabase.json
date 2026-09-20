@@ -1,0 +1,30 @@
+{
+  "note": "Hex values are approximate community reference points for matching color-theory positions to real paint names. Always check against a physical paint chip or the brand's official swatch before committing to a scheme.",
+  "brands": ["Citadel", "Vallejo", "AK Interactive", "Army Painter", "Two Thin Coats"],
+  "swatches": [
+    { "category": "Deep Shadow Purple", "hex": "#1B0F2E", "paints": { "Citadel": "Naggaroth Night", "Vallejo": "Deep Violet Shade", "AK Interactive": "AK Purple Wash", "Army Painter": "Dark Wizard Purple", "Two Thin Coats": "Undertone Violet" } },
+    { "category": "Shadow Purple", "hex": "#3B1B5C", "paints": { "Citadel": "Xereus Purple", "Vallejo": "Royal Purple", "AK Interactive": "AK Violet Shadow", "Army Painter": "Alien Purple", "Two Thin Coats": "Studio Purple" } },
+    { "category": "Purple", "hex": "#6A3AA0", "paints": { "Citadel": "Genestealer Purple", "Vallejo": "Warlord Purple", "AK Interactive": "AK Amethyst", "Army Painter": "Wizard Purple", "Two Thin Coats": "Mid Violet" } },
+    { "category": "Magenta / Pink-Purple", "hex": "#A83E8C", "paints": { "Citadel": "Screamer Pink", "Vallejo": "Magenta", "AK Interactive": "AK Fuchsia", "Army Painter": "Demon Pink", "Two Thin Coats": "Bright Magenta" } },
+    { "category": "Dark Blue", "hex": "#152A4A", "paints": { "Citadel": "Kantor Blue", "Vallejo": "Prussian Blue", "AK Interactive": "AK Deep Blue Shadow", "Army Painter": "Crystal Blue Shade", "Two Thin Coats": "Undertone Navy" } },
+    { "category": "Blue", "hex": "#1E4E8C", "paints": { "Citadel": "Macragge Blue", "Vallejo": "Ultramarine", "AK Interactive": "AK Deep Sky Blue", "Army Painter": "Crystal Blue", "Two Thin Coats": "Studio Blue" } },
+    { "category": "Teal / Blue-Green", "hex": "#1F6E64", "paints": { "Citadel": "Kabalite Green", "Vallejo": "Sea Grey Medium", "AK Interactive": "AK Teal Wash", "Army Painter": "Meridian Blue", "Two Thin Coats": "Mid Teal" } },
+    { "category": "Green", "hex": "#3B6E2A", "paints": { "Citadel": "Caliban Green", "Vallejo": "Dark Green", "AK Interactive": "AK Olive Green", "Army Painter": "Greenskin", "Two Thin Coats": "Studio Green" } },
+    { "category": "Bright Green", "hex": "#6FA83D", "paints": { "Citadel": "Warboss Green", "Vallejo": "Green Fluor", "AK Interactive": "AK Bright Green", "Army Painter": "Goblin Green", "Two Thin Coats": "Highlight Green" } },
+    { "category": "Orange Brown", "hex": "#6E3B1E", "paints": { "Citadel": "Doombull Brown", "Vallejo": "Flat Brown", "AK Interactive": "AK Burnt Umber", "Army Painter": "Leather Brown", "Two Thin Coats": "Undertone Rust" } },
+    { "category": "Red Brown", "hex": "#5C2A1E", "paints": { "Citadel": "Rhinox Hide", "Vallejo": "Red Leather", "AK Interactive": "AK Dark Red Brown", "Army Painter": "Skeleton Bone Shade", "Two Thin Coats": "Undertone Sienna" } },
+    { "category": "Orange", "hex": "#C9631E", "paints": { "Citadel": "Troll Slayer Orange", "Vallejo": "Orange Fire", "AK Interactive": "AK Flat Orange", "Army Painter": "Wham Yellow Orange", "Two Thin Coats": "Studio Orange" } },
+    { "category": "Red", "hex": "#9E1B1B", "paints": { "Citadel": "Mephiston Red", "Vallejo": "Scarlet", "AK Interactive": "AK Intense Red", "Army Painter": "Dragon Red", "Two Thin Coats": "Studio Red" } },
+    { "category": "Deep Red", "hex": "#5C1010", "paints": { "Citadel": "Khorne Red", "Vallejo": "Gory Red", "AK Interactive": "AK Blood Red Shadow", "Army Painter": "Dragon Red Shade", "Two Thin Coats": "Undertone Maroon" } },
+    { "category": "Ochre", "hex": "#A9791E", "paints": { "Citadel": "Zamesi Desert", "Vallejo": "Ochre Brown", "AK Interactive": "AK Yellow Ochre", "Army Painter": "Daemonic Yellow", "Two Thin Coats": "Studio Ochre" } },
+    { "category": "Yellow", "hex": "#D9B01E", "paints": { "Citadel": "Averland Sunset", "Vallejo": "Golden Yellow", "AK Interactive": "AK Deep Yellow", "Army Painter": "Wham Yellow", "Two Thin Coats": "Studio Yellow" } },
+    { "category": "Light Yellow", "hex": "#EBD877", "paints": { "Citadel": "Flash Gitz Yellow", "Vallejo": "Ice Yellow", "AK Interactive": "AK Pale Yellow", "Army Painter": "Wham Yellow Highlight", "Two Thin Coats": "Highlight Yellow" } },
+    { "category": "Gold Base", "hex": "#8A6A1E", "paints": { "Citadel": "Balthasar Gold", "Vallejo": "Brass", "AK Interactive": "AK True Metal Gold Shadow", "Army Painter": "Greedy Gold", "Two Thin Coats": "NMM Gold Base" } },
+    { "category": "Flesh (Light)", "hex": "#E3B08C", "paints": { "Citadel": "Cadian Fleshtone", "Vallejo": "Sunny Skin Tone", "AK Interactive": "AK Pale Flesh", "Army Painter": "Barbarian Flesh", "Two Thin Coats": "Studio Fleshtone" } },
+    { "category": "Flesh (Dark)", "hex": "#8C5A3E", "paints": { "Citadel": "Rakarth Flesh", "Vallejo": "Heavy Skintone", "AK Interactive": "AK Dark Flesh", "Army Painter": "Tanned Flesh", "Two Thin Coats": "Deep Fleshtone" } },
+    { "category": "Olive Flesh", "hex": "#7A7A4A", "paints": { "Citadel": "Ushabti Bone Shade", "Vallejo": "Green Ochre", "AK Interactive": "AK Olive Flesh", "Army Painter": "Oak Brown", "Two Thin Coats": "Studio Olive Flesh" } },
+    { "category": "Grey", "hex": "#5A5A5A", "paints": { "Citadel": "Dawnstone", "Vallejo": "German Grey", "AK Interactive": "AK Neutral Grey", "Army Painter": "Wolf Grey", "Two Thin Coats": "Mid Grey" } },
+    { "category": "Ivory / Near White", "hex": "#EDE3C8", "paints": { "Citadel": "Ushabti Bone", "Vallejo": "Ivory", "AK Interactive": "AK Off White", "Army Painter": "Army Painter Skeleton Bone", "Two Thin Coats": "Highlight Ivory" } },
+    { "category": "White", "hex": "#F5F2EA", "paints": { "Citadel": "White Scar", "Vallejo": "Wolf Grey White", "AK Interactive": "AK Pure White", "Army Painter": "Matt White", "Two Thin Coats": "Extreme Highlight White" } }
+  ]
+}

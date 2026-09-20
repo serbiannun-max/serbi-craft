@@ -1,0 +1,33 @@
+[package]
+name = "miniature-painter-color-theory-assistant"
+version = "1.0.0"
+description = "A local-first color theory assistant for miniature painters"
+authors = ["Miniature Painter Color Theory Assistant"]
+edition = "2021"
+rust-version = "1.77"
+
+# See more at: https://tauri.app/develop/#project-structure
+[lib]
+name = "miniature_painter_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[[bin]]
+name = "miniature-painter-color-theory-assistant"
+path = "src/main.rs"
+
+# Smaller, faster release binaries. Irrelevant to correctness, purely a
+# release-build optimization for a desktop installer.
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true

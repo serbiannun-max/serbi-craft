@@ -1,9 +1,0 @@
-{
-  "$schema": "../gen/schemas/desktop-schema.json",
-  "identifier": "default",
-  "description": "Capability granted to the main application window for Phase 1: core window/app APIs only. Extend this file when a future module needs a plugin (dialog, fs, etc.).",
-  "windows": ["main"],
-  "permissions": [
-    "core:default"
-  ]
-}

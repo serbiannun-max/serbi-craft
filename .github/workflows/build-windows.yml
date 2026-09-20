@@ -38,7 +38,7 @@ jobs:
           workspaces: src-tauri
 
       - name: Install frontend dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build Windows installer (NSIS .exe + MSI)
         uses: tauri-apps/tauri-action@v0

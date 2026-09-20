@@ -31,7 +31,7 @@
     "active": true,
     "createUpdaterArtifacts": false,
     "targets": ["nsis", "msi"],
-    "icon": [],
+    "icon": ["icons/icon.ico"],
     "windows": {
       "webviewInstallMode": {
         "type": "downloadBootstrapper",

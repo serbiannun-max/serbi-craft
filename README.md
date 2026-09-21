@@ -36,8 +36,9 @@ npm run build
 npm run preview
 ```
 
-## Phase 1 (this build)
+## Phase 1 + Phase 2 (this build)
 
+**Core modules (Phase 1):**
 - **Color Wheel** — click/drag an HSL wheel, or type exact HEX/RGB/HSL values.
   Shows complementary, analogous, split-complementary, and triadic harmonies on
   the standard digital color wheel.
@@ -47,20 +48,31 @@ npm run preview
   explanation of why each step was chosen.
 - **Underpainting** — Best / Good / Experimental underpainting recommendations,
   ranked from safest high-contrast choice to a bolder alternative.
+- **Skin Tones** — four flesh-tone presets (Light, Dark, Olive, Fantasy).
 - **NMM Gold** — a ready-made non-metallic-metal gold ladder with painting-order
   notes.
 - **Paint Brands** — matches every step of the current ladder to the nearest
-  real paint across five brands (Citadel, Vallejo, AK Interactive, Army
-  Painter, Two Thin Coats), with a match-confidence score.
+  real paint across five brands, with a match-confidence score.
 - **Collection Manager** — mark which real paints you own; owned paints are
-  highlighted wherever they're recommended. Includes a form for adding paints
-  that aren't in the database yet. Persisted locally via `localStorage`.
+  highlighted wherever they're recommended. Persisted locally via `localStorage`.
 
-**Skin Tones** is also fully working (four flesh-tone presets), built ahead of
-schedule since it shares the same ladder/strip components. **NMM Steel**,
-**Paint Analyzer**, **Workbench Card**, and **Knowledge Base** are stubbed as
-"Phase 2" placeholders so the navigation already matches the full planned app —
-ask for Phase 2 to fill those in.
+**Phase 2 modules (this update):**
+- **NMM Steel** — the cool-metal counterpart to NMM Gold: a blue-grey contrast
+  ladder with its own painting-order notes.
+- **Paint Analyzer** — drag-and-drop a box-art or reference photo (JPG/PNG/WEBP)
+  and it extracts the dominant colors entirely on-device via canvas + a small
+  k-means clustering implementation — nothing is uploaded anywhere, works fully
+  offline. Click any extracted swatch to send it to the Color Wheel, which
+  updates every other module.
+- **Workbench Card** — a one-page A4 printable reference card (current color,
+  paint ladder, underpainting options, a mini color wheel). Print it via the OS
+  print dialog, or download a real PDF with one click (via `jsPDF` +
+  `html2canvas`, both running client-side).
+- **Knowledge Base** — searchable theory write-ups explaining why each module
+  recommends what it does (traditional pigment wheel vs. RGB wheel, why skin
+  shadows go through purple, how NMM contrast works, etc.).
+
+All ten modules are reachable from the sidebar; nothing is stubbed anymore.
 
 ## Why the color math isn't a straight complement
 
@@ -82,14 +94,17 @@ src/
     paintMatch.ts           nearest-paint lookup + match confidence
     collection.ts            localStorage-backed owned/custom paint store
     tauriBridge.ts            detects the desktop runtime, calls the example Rust command
+    colorExtraction.ts         on-device k-means dominant-color extraction (Paint Analyzer)
   data/
     paintDatabase.json     brand paint names per color-theory category
     skinPresets.json         skin tone ladders
     nmmGold.json               NMM gold ladder + notes
+    nmmSteel.json                NMM steel ladder + notes
+    knowledgeBase.json             searchable theory write-ups
   components/
     ColorWheel.tsx, ColorInputs.tsx, HarmonyDisplay.tsx, LadderStrip.tsx,
-    SwatchCard.tsx, TemperatureBlock.tsx
-    panels/                one component per nav module
+    SwatchCard.tsx, TemperatureBlock.tsx, MiniColorWheel.tsx
+    panels/                one component per nav module (10 modules total)
   App.tsx                   sidebar nav + shared selected-color state
 
 src-tauri/                  native desktop shell (Rust, Tauri v2)

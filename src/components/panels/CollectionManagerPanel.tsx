@@ -1,17 +1,16 @@
 import { useEffect, useMemo, useState } from 'react'
-import { brandList } from '../../utils/paintMatch'
-import { flattenPaintCatalog } from '../../utils/paintMatch'
+import { PAINT_RANGES, getAllPaints } from '../../utils/paintCatalog'
 import { CustomPaint, loadCustomPaints, loadOwned, saveCustomPaints, saveOwned } from '../../utils/collection'
 
 export default function CollectionManagerPanel() {
-  const catalog = useMemo(() => flattenPaintCatalog(), [])
+  const catalog = useMemo(() => getAllPaints(), [])
   const [owned, setOwned] = useState<Set<string>>(new Set())
   const [custom, setCustom] = useState<CustomPaint[]>([])
   const [search, setSearch] = useState('')
   const [brandFilter, setBrandFilter] = useState<string>('All')
   const [ownedOnly, setOwnedOnly] = useState(false)
 
-  const [newBrand, setNewBrand] = useState(brandList[0])
+  const [newBrand, setNewBrand] = useState<string>(PAINT_RANGES[0])
   const [newName, setNewName] = useState('')
   const [newHex, setNewHex] = useState('#8A6A1E')
 
@@ -46,9 +45,9 @@ export default function CollectionManagerPanel() {
   }
 
   const filtered = catalog.filter((p) => {
-    if (brandFilter !== 'All' && p.brand !== brandFilter) return false
+    if (brandFilter !== 'All' && p.manufacturer !== brandFilter) return false
     if (ownedOnly && !owned.has(p.id)) return false
-    if (search && !`${p.name} ${p.category}`.toLowerCase().includes(search.toLowerCase())) return false
+    if (search && !`${p.name} ${p.manufacturer}`.toLowerCase().includes(search.toLowerCase())) return false
     return true
   })
 
@@ -76,7 +75,7 @@ export default function CollectionManagerPanel() {
           className="rounded border border-forge-border bg-forge-panel2 px-3 py-1.5 text-sm text-forge-ink focus:border-forge-copper"
         >
           <option>All</option>
-          {brandList.map((b) => <option key={b}>{b}</option>)}
+          {PAINT_RANGES.map((r) => <option key={r}>{r}</option>)}
         </select>
         <label className="flex items-center gap-2 text-sm text-forge-mute">
           <input type="checkbox" checked={ownedOnly} onChange={(e) => setOwnedOnly(e.target.checked)} className="accent-forge-copper" />
@@ -99,7 +98,7 @@ export default function CollectionManagerPanel() {
               <span className="h-7 w-7 shrink-0 rounded border border-forge-border" style={{ backgroundColor: p.hex }} />
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-sm text-forge-ink">{p.name}</span>
-                <span className="block truncate text-[10px] text-forge-mute">{p.brand} · {p.category}</span>
+                <span className="block truncate text-[10px] text-forge-mute">{p.manufacturer}</span>
               </span>
               <span className={`h-4 w-4 shrink-0 rounded-sm border ${isOwned ? 'border-forge-sage bg-forge-sage' : 'border-forge-border'}`} />
             </button>
@@ -114,7 +113,7 @@ export default function CollectionManagerPanel() {
           <label className="flex flex-col gap-1 text-xs text-forge-mute">
             Brand
             <select value={newBrand} onChange={(e) => setNewBrand(e.target.value)} className="rounded border border-forge-border bg-forge-panel px-2 py-1.5 text-sm text-forge-ink">
-              {brandList.map((b) => <option key={b}>{b}</option>)}
+              {PAINT_RANGES.map((r) => <option key={r}>{r}</option>)}
               <option>Other</option>
             </select>
           </label>

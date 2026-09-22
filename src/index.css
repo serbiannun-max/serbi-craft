@@ -31,4 +31,27 @@ body {
 
 @media print {
   body { background: white !important; }
+
+  /* Isolate the Workbench Card: hide everything else (sidebar, nav, other
+     panel chrome) and print only the card itself, full page. */
+  body * {
+    visibility: hidden;
+  }
+  #workbench-card,
+  #workbench-card * {
+    visibility: visible;
+  }
+  #workbench-card {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 210mm;
+    min-height: 297mm;
+    box-shadow: none !important;
+    margin: 0 !important;
+  }
+  @page {
+    size: A4;
+    margin: 0;
+  }
 }

@@ -1,0 +1,102 @@
+{
+  "entries": [
+    {
+      "id": "pigment-vs-rgb-wheel",
+      "title": "Why this app doesn't use the \"digital\" color wheel for shadows",
+      "category": "Color Theory",
+      "tags": ["complementary", "rgb", "ryb", "wheel"],
+      "body": "Screens use an RGB wheel where red's complement is cyan. Painters are taught a pigment-based wheel instead, where Red↔Green, Yellow↔Violet, and Blue↔Orange are the complementary pairs. This app's Miniature Advisor and Underpainting modules use that traditional pigment wheel for every shadow and underpainting recommendation, since that's what actually reads as correct to a painter's eye. The Color Wheel tab's harmony display (complementary/analogous/triadic swatches) intentionally uses the plain digital wheel instead, since that's the literal math most people expect from a general-purpose color wheel tool."
+    },
+    {
+      "id": "why-underpaint",
+      "title": "Why underpaint with a complementary color at all",
+      "category": "Technique",
+      "tags": ["underpainting", "contrast", "zenithal"],
+      "body": "A thin layer of a complementary color underneath your base coat does two things: it deepens the recesses without needing a heavy black wash, and it gives your shadow glazes something to react against, so the true shadow color you paint on top reads as richer and more saturated than a straight black-mix shadow ever will. It costs one extra layer up front and pays that back many times over in how little correction you need later."
+    },
+    {
+      "id": "nmm-theory",
+      "title": "How non-metallic metal (NMM) actually works",
+      "category": "NMM Gold",
+      "tags": ["nmm", "gold", "contrast"],
+      "body": "Metal doesn't have a color so much as it has a very specific pattern of value contrast: hard, sharp jumps from very dark to very bright, with a tiny near-white specular highlight placed opposite the light source's reflection rather than blended into the main highlight. NMM fakes this with ordinary paint by exaggerating that value jump far beyond what the actual local lighting would produce on a matte surface. Gold and steel differ mainly in hue family (warm ochre/yellow vs. cool blue/grey) and how tight the specular highlight is — steel's is smaller and harder-edged."
+    },
+    {
+      "id": "nmm-steel-vs-gold",
+      "title": "Why NMM Steel reads as colder than NMM Gold",
+      "category": "NMM Steel",
+      "tags": ["nmm", "steel", "contrast", "temperature"],
+      "body": "Steel's whole ladder sits closer together in hue than gold's, almost entirely blue-grey, and leans on value contrast even harder to compensate — a too-neutral dark shadow on steel reads as grey plastic rather than polished metal, so push Deep Shadow further into blue than feels natural. The specular reflection is also smaller and harder-edged than on gold, since steel is a smoother, less warm-toned surface than gold in most physical reference."
+    },
+    {
+      "id": "materials-general",
+      "title": "Reading a surface: armor, cloth, and leather",
+      "category": "Materials",
+      "tags": ["materials", "armor", "cloth", "leather"],
+      "body": "None of these need special-case color theory the way skin or metal do — they're ordinary matte surfaces, so the general complementary-shadow ladder applies directly. What changes is contrast and edge treatment: armor plates benefit from harder highlight edges (sharper transitions, closer to NMM in spirit) to read as rigid and reflective; cloth wants softer, more gradual blends since fabric folds diffusely; leather sits in between, often taking a slightly desaturated, warm-brown base regardless of the model's overall palette, since leather rarely reads as a saturated hue even when dyed."
+    },
+    {
+      "id": "golden-demon-technique",
+      "title": "What separates competition-level (Golden Demon style) painting",
+      "category": "Golden Demon style techniques",
+      "tags": ["competition", "freehand", "edge highlighting", "zenithal", "glazing"],
+      "body": "The color recipes in this app get you a correct-in-theory scheme; competition-level execution is mostly about technique layered on top of that scheme. A few high-value habits: edge highlighting (a fine, near-white line along the sharpest physical edges of armor/weapons, distinct from the broader zone highlight) sells hardness and scale; zenithal priming (light from directly above before painting) bakes a consistent light source into every subsequent glaze; glazing (many thin, transparent layers) builds richer, more luminous color than fewer opaque layers of the same final color; and freehand (hand-painted insignia, patterns, or damage) is usually what separates a well-painted stock scheme from a genuinely competition-ready piece. None of this changes which colors to use — it changes how precisely and gradually you apply the ladder this app already gives you."
+    },
+    {
+      "id": "glazing-vs-layering",
+      "title": "Glazing vs. layering, and when to use each",
+      "category": "Golden Demon style techniques",
+      "tags": ["glazing", "layering", "technique"],
+      "body": "Layering applies increasingly light, moderately thinned paint in distinct steps (roughly matching this app's Deep Shadow → Extreme Highlight ladder) and is faster and more forgiving. Glazing applies many very thin, heavily thinned coats of the same or a nearby color to shift tone gradually and smoothly, favored for skin and NMM because it avoids visible hard edges between steps. Most display-level painters mix both: layer the big value jumps for speed, then glaze over the transitions to soften them."
+    },
+    {
+      "id": "warm-cool-shadows",
+      "title": "Warm colors get cool shadows (and vice versa) — why",
+      "category": "Color Temperature",
+      "tags": ["temperature", "warm", "cool"],
+      "body": "A shadow that's just a darker version of the base color reads as flat — like the lights got turned down, not like light is actually falling across a 3D object. Shifting the shadow toward the opposite temperature (cool shadow on a warm base, warm shadow on a cool base) mimics how ambient/bounced light in a real scene is almost never the exact same color as the key light, which is what your eye actually uses to read depth."
+    },
+    {
+      "id": "highlights-skew-warm",
+      "title": "Why highlights skew warm even on cool base colors",
+      "category": "Color Temperature",
+      "tags": ["highlight", "temperature", "light source"],
+      "body": "Most real and display light sources (incandescent bulbs, warm-white LEDs, direct sun) skew slightly warm/yellow, not neutral white. Pulling your highlight and extreme highlight steps toward ochre/ivory instead of straight-adding white keeps the brightest point on the model reading as \"lit by a light source\" instead of \"lightened in software.\" This app's Miniature Advisor applies a small, consistent warm pull to every highlight step for that reason, regardless of the base color's own temperature."
+    },
+    {
+      "id": "skin-tone-shadows",
+      "title": "Why skin shadows go through purple, not brown",
+      "category": "Skin Tones",
+      "tags": ["skin", "flesh", "purple", "shadow"],
+      "body": "Real skin has visible blood and subsurface scattering, which shows up as a subtle red-violet cast in shadowed areas — think of how a hand looks held up in front of a light. Painting skin shadows as purple-into-red-brown rather than a flat darker-brown mimics that, and is why almost every serious skin recipe (including the four presets in the Skin Tones module) routes through a purple or magenta step before settling into brown/red-brown."
+    },
+    {
+      "id": "underpainting-risk-ladder",
+      "title": "Reading Best / Good / Experimental in the Underpainting module",
+      "category": "Technique",
+      "tags": ["underpainting", "risk", "contrast"],
+      "body": "Best uses the full-strength traditional complement — maximum contrast, most predictable result, safest choice for a piece you can't afford to get wrong. Good is a split-complementary neighbor: slightly softer, more forgiving to blend over, at a small cost to peak contrast. Experimental deliberately breaks from a true complement toward a triadic hue instead — less textbook-correct, but it can give fantasy/NMM schemes a livelier, less predictable undertone. Test Experimental on a spare model or a hidden panel first."
+    },
+    {
+      "id": "reading-box-art",
+      "title": "Using the Paint Analyzer to reverse-engineer a box-art scheme",
+      "category": "Technique",
+      "tags": ["paint analyzer", "box art", "palette"],
+      "body": "Drop a box-art photo or a display piece you admire into the Paint Analyzer and it clusters the image into its dominant colors on-device (no upload, nothing leaves your machine). Click any extracted swatch to send it straight to the Color Wheel, and every other module — the Advisor, Underpainting, and Paint Brands — immediately recalculates around it. This is a fast way to ask \"what would my underpainting look like if I built toward that exact box-art red?\" without eyeballing a hex code by hand."
+    },
+    {
+      "id": "match-confidence",
+      "title": "What the Paint Brands \"match confidence\" score means",
+      "category": "Paint Brands",
+      "tags": ["paint brands", "confidence", "database"],
+      "body": "Every computed color-theory swatch is compared against the entries in the local paint database by straight-line RGB distance, and converted to a 0-100% score (100% would be an exact hex match). A high score means the named paint is very close to the theoretical color; a lower score means it's the closest available match in the database but you should expect to tweak it slightly, or mix a touch of a neighboring paint, to hit the exact recipe color. Always check against a physical paint chip before committing — hex approximations can't fully capture how a paint looks under your actual lighting."
+    },
+    {
+      "id": "collection-manager-purpose",
+      "title": "Why track a paint collection at all",
+      "category": "Collection Manager",
+      "tags": ["collection", "owned paints"],
+      "body": "The theory engine will happily recommend a paint you don't own. The Collection Manager exists so the Paint Brands module can highlight which of its recommendations you can actually reach for on your shelf right now, versus which would require a trip to the store or a substitution. It's stored only in this browser's local storage — nothing about your collection is uploaded anywhere, and it works fully offline in the desktop build."
+    }
+  ]
+}

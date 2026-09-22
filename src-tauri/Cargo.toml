@@ -1,6 +1,6 @@
 [package]
 name = "miniature-painter-color-theory-assistant"
-version = "1.0.0"
+version = "1.2.0"
 description = "A local-first color theory assistant for miniature painters"
 authors = ["Miniature Painter Color Theory Assistant"]
 edition = "2021"

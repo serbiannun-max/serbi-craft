@@ -213,6 +213,34 @@ export function artisticOffsetHue(rgbHue: number, artDegrees: number): number {
   return artHueToRgbHue(normalizeHue(art + artDegrees))
 }
 
+// --- HSV (Hue/Saturation/Value) ---------------------------------------
+// Paint catalogs conventionally describe a color's Value (HSV), not
+// Lightness (HSL) — they're related but not identical. Added alongside the
+// existing HSL utilities rather than replacing them, since the rest of the
+// app (harmonies, the ladder engine) is built on HSL.
+export interface HSV { h: number; s: number; v: number }
+
+export function rgbToHsv({ r, g, b }: RGB): HSV {
+  const rn = r / 255, gn = g / 255, bn = b / 255
+  const max = Math.max(rn, gn, bn), min = Math.min(rn, gn, bn)
+  const d = max - min
+  let h = 0
+  if (d !== 0) {
+    switch (max) {
+      case rn: h = ((gn - bn) / d) % 6; break
+      case gn: h = (bn - rn) / d + 2; break
+      default: h = (rn - gn) / d + 4; break
+    }
+    h *= 60
+  }
+  const s = max === 0 ? 0 : d / max
+  return { h: normalizeHue(h), s: clamp(s * 100, 0, 100), v: clamp(max * 100, 0, 100) }
+}
+
+export function hexToHsv(hex: string): HSV {
+  return rgbToHsv(hexToRgb(hex))
+}
+
 // Warm anchor centered on red-orange (hue 40), cool anchor centered on
 // cyan-blue (hue 220). Produces a smooth 0-100% warmth score from hue,
 // weighted down as saturation drops (greys are thermally neutral).

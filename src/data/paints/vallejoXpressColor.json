@@ -1,0 +1,26 @@
+{
+  "manufacturer": "Vallejo Xpress Color",
+  "note": "Names reflect Vallejo's newer, pre-thinned Xpress Color line; hex values are approximate community reference points (this project has no internet access to verify against Vallejo's current official swatches) for matching color-theory positions to a plausible paint, not an official color-matched catalog. This is Vallejo's smallest/newest line, so treat these entries as the most tentative of the three catalogs — verify against a physical paint chip or vallejocolor.com before committing a scheme.",
+  "paints": [
+    { "name": "Chaos Black", "hex": "#1A1A1E" },
+    { "name": "Wasteland Brown", "hex": "#5C4530" },
+    { "name": "Goblin Skin", "hex": "#6E8C3E" },
+    { "name": "Troll Green", "hex": "#3E6E3E" },
+    { "name": "Nightshade Purple", "hex": "#3E2266" },
+    { "name": "Caribbean Blue", "hex": "#1E7AA0" },
+    { "name": "Bruised Violet", "hex": "#5C3E6E" },
+    { "name": "Barbarian Flesh", "hex": "#B3764A" },
+    { "name": "Elven Flesh", "hex": "#E3C09A" },
+    { "name": "Sunburn Red", "hex": "#A0281E" },
+    { "name": "Phoenix Orange", "hex": "#D9601E" },
+    { "name": "Solar Yellow", "hex": "#D9B01E" },
+    { "name": "Forest Goblin", "hex": "#4A6E2E" },
+    { "name": "Toxic Sludge", "hex": "#6E7A2E" },
+    { "name": "Dwarven Gold", "hex": "#9E7A2E" },
+    { "name": "Ironclad Steel", "hex": "#6E767A" },
+    { "name": "Deepwater Blue", "hex": "#1E3E6E" },
+    { "name": "Royal Crimson", "hex": "#7A1E2E" },
+    { "name": "Bone White", "hex": "#D7CDA8" },
+    { "name": "Ash Grey", "hex": "#5C6268" }
+  ]
+}

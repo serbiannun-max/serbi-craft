@@ -1,0 +1,33 @@
+{
+  "manufacturer": "Vallejo Game Color",
+  "note": "Names reflect the real Vallejo Game Color line; hex values are approximate community reference points (this project has no internet access to verify against Vallejo's current official swatches) for matching color-theory positions to a plausible paint, not an official color-matched catalog. Verify against a physical paint chip or vallejocolor.com before committing a scheme.",
+  "paints": [
+    { "name": "Off-White", "hex": "#DED2AE" },
+    { "name": "Bonewhite", "hex": "#D7CDA8" },
+    { "name": "Cold Grey", "hex": "#7A828A" },
+    { "name": "Stonewall Grey", "hex": "#5C6268" },
+    { "name": "Sombre Grey", "hex": "#3E4448" },
+    { "name": "Wolf Grey", "hex": "#8A8E92" },
+    { "name": "Dark Prussian Blue", "hex": "#12283E" },
+    { "name": "Magic Blue", "hex": "#2E4E8C" },
+    { "name": "Electric Blue", "hex": "#2E7ABE" },
+    { "name": "Gorgon Purple", "hex": "#3A1E5C" },
+    { "name": "Warlord Purple", "hex": "#5C2E8C" },
+    { "name": "Bloody Red", "hex": "#8C1A1E" },
+    { "name": "Gory Red", "hex": "#B3221E" },
+    { "name": "Sunset Red", "hex": "#C43A2E" },
+    { "name": "Hot Orange", "hex": "#D9601E" },
+    { "name": "Sun Yellow", "hex": "#D9A81E" },
+    { "name": "Toxic Yellow", "hex": "#C7C41E" },
+    { "name": "Green Ochre", "hex": "#7A7A3E" },
+    { "name": "Goblin Green", "hex": "#4A7A2E" },
+    { "name": "Jade Green", "hex": "#1E7A5C" },
+    { "name": "Scurvy Green", "hex": "#5C7A2E" },
+    { "name": "Charred Brown", "hex": "#3A241A" },
+    { "name": "Scrofulous Brown", "hex": "#6E4A2E" },
+    { "name": "Beast Brown", "hex": "#5C3E28" },
+    { "name": "Dead Flesh", "hex": "#8C9A6E" },
+    { "name": "Elf Skintone", "hex": "#D9AE8C" },
+    { "name": "Barbarian Flesh", "hex": "#B3764A" }
+  ]
+}

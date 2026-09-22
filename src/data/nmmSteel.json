@@ -1,0 +1,18 @@
+{
+  "label": "NMM Steel",
+  "description": "Steel and silver read as cold, hard metal through sharp value contrast on a neutral-to-cool grey scale, the cool counterpart to NMM Gold. Keep saturation low throughout — steel is about value contrast, not hue.",
+  "ladder": [
+    { "step": "Deep Shadow", "hex": "#0E1A2A", "name": "Deep Blue" },
+    { "step": "Shadow", "hex": "#26384A", "name": "Blue Grey" },
+    { "step": "Midtone", "hex": "#5A6670", "name": "Neutral Grey" },
+    { "step": "Bright", "hex": "#93A0A8", "name": "Light Grey" },
+    { "step": "Highlight", "hex": "#D8DFE3", "name": "White" },
+    { "step": "Specular Reflection", "hex": "#FFFFFF", "name": "Reflection White" }
+  ],
+  "notes": [
+    "Steel's whole ladder sits closer together in hue than gold's — the read comes almost entirely from how sharp the value jumps are, not from color variety.",
+    "Push the Deep Shadow further into blue than feels natural; a too-neutral dark shadow reads as grey plastic, not polished metal.",
+    "The Specular Reflection is smaller and harder-edged than on gold. Steel has a tighter, more mirror-like highlight because it's a smoother, less warm-toned surface.",
+    "Reuse Deep Shadow and Shadow for recesses even away from the main light source, the same way as NMM Gold — metal reflects its dark surroundings, not just local shading."
+  ]
+}

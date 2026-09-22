@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { HSL, hexToHsl, hslToHex } from './utils/colorMath'
 import { DesktopAppInfo, getDesktopAppInfo } from './utils/tauriBridge'
+import { SettingsProvider, useSettings } from './context/SettingsContext'
+import { PAINT_RANGES } from './utils/paintCatalog'
 import ColorWheelPanel from './components/panels/ColorWheelPanel'
 import MiniatureAdvisorPanel from './components/panels/MiniatureAdvisorPanel'
 import UnderpaintingPanel from './components/panels/UnderpaintingPanel'
@@ -8,23 +10,29 @@ import SkinPanel from './components/panels/SkinPanel'
 import NmmGoldPanel from './components/panels/NmmGoldPanel'
 import PaintBrandsPanel from './components/panels/PaintBrandsPanel'
 import CollectionManagerPanel from './components/panels/CollectionManagerPanel'
-import ComingSoonPanel from './components/panels/ComingSoonPanel'
+import NmmSteelPanel from './components/panels/NmmSteelPanel'
+import PaintAnalyzerPanel from './components/panels/PaintAnalyzerPanel'
+import WorkbenchCardPanel from './components/panels/WorkbenchCardPanel'
+import KnowledgeBasePanel from './components/panels/KnowledgeBasePanel'
+import BoxArtAnalyzerPanel from './components/panels/BoxArtAnalyzerPanel'
+import RecipeComparisonPanel from './components/panels/RecipeComparisonPanel'
 
 type ModuleId =
   | 'wheel' | 'advisor' | 'underpainting' | 'skin' | 'nmmGold'
   | 'nmmSteel' | 'analyzer' | 'brands' | 'collection' | 'workbench' | 'knowledge'
+  | 'boxArt' | 'comparison'
 
 interface NavItem {
   id: ModuleId
   label: string
-  phase: 1 | 2
+  phase: 1 | 2 | 3
 }
 
 const NAV: NavItem[] = [
   { id: 'wheel', label: 'Color Wheel', phase: 1 },
   { id: 'advisor', label: 'Miniature Advisor', phase: 1 },
   { id: 'underpainting', label: 'Underpainting', phase: 1 },
-  { id: 'skin', label: 'Skin Tones', phase: 2 },
+  { id: 'skin', label: 'Skin Tones', phase: 1 },
   { id: 'nmmGold', label: 'NMM Gold', phase: 1 },
   { id: 'nmmSteel', label: 'NMM Steel', phase: 2 },
   { id: 'analyzer', label: 'Paint Analyzer', phase: 2 },
@@ -32,12 +40,23 @@ const NAV: NavItem[] = [
   { id: 'collection', label: 'Collection Manager', phase: 1 },
   { id: 'workbench', label: 'Workbench Card', phase: 2 },
   { id: 'knowledge', label: 'Knowledge Base', phase: 2 },
+  { id: 'boxArt', label: 'Box Art Analyzer', phase: 3 },
+  { id: 'comparison', label: 'Recipe Comparison', phase: 3 },
 ]
 
 export default function App() {
+  return (
+    <SettingsProvider>
+      <AppShell />
+    </SettingsProvider>
+  )
+}
+
+function AppShell() {
   const [hsl, setHsl] = useState<HSL>(hexToHsl('#D9B01E')) // start on a warm yellow
   const [active, setActive] = useState<ModuleId>('wheel')
   const [desktopInfo, setDesktopInfo] = useState<DesktopAppInfo | null>(null)
+  const { preferredRange, setPreferredRange } = useSettings()
 
   useEffect(() => {
     getDesktopAppInfo().then(setDesktopInfo)
@@ -52,54 +71,12 @@ export default function App() {
       case 'nmmGold': return <NmmGoldPanel />
       case 'brands': return <PaintBrandsPanel hsl={hsl} />
       case 'collection': return <CollectionManagerPanel />
-      case 'nmmSteel':
-        return (
-          <ComingSoonPanel
-            title="NMM Steel"
-            description="A non-metallic-metal ladder for steel and silver: deep blue shadow through neutral grey midtones to a hard specular white, the cool-metal counterpart to NMM Gold."
-            bullets={[
-              'Deep Blue → Blue Grey → Neutral Grey → Light Grey → White → Reflection White ladder',
-              'Contrast ladder visualization matching the NMM Gold strip format',
-              'Painting-order guide tuned for steel\'s sharper, cooler value jumps',
-            ]}
-          />
-        )
-      case 'analyzer':
-        return (
-          <ComingSoonPanel
-            title="Paint Analyzer"
-            description="Upload a box-art or reference photo and extract a working palette from it to drive the advisor, underpainting, and paint-brand modules."
-            bullets={[
-              'Drag-and-drop upload for JPG, PNG, and WEBP',
-              'On-device color extraction — the image never leaves your machine',
-              'One-click hand-off of an extracted swatch into the Color Wheel',
-            ]}
-          />
-        )
-      case 'workbench':
-        return (
-          <ComingSoonPanel
-            title="Workbench Card"
-            description="A printable A4 reference card: current color, underpainting advice, shadows, highlights, and a mini color wheel, ready in one click."
-            bullets={[
-              'A4-formatted layout built for print',
-              'Pulls live from whatever color is currently selected',
-              'One-click print / save-as-PDF',
-            ]}
-          />
-        )
-      case 'knowledge':
-        return (
-          <ComingSoonPanel
-            title="Knowledge Base"
-            description="The theory behind every recommendation in one place: why NMM works, how underpainting shortens blending time, and how to read box art for a scheme."
-            bullets={[
-              'Short, illustrated write-ups linked from each module\'s "why this works" sections',
-              'A glossary of miniature-painting color terms',
-              'Searchable across all modules',
-            ]}
-          />
-        )
+      case 'nmmSteel': return <NmmSteelPanel />
+      case 'analyzer': return <PaintAnalyzerPanel onPick={(hex) => setHsl(hexToHsl(hex))} />
+      case 'workbench': return <WorkbenchCardPanel hsl={hsl} />
+      case 'knowledge': return <KnowledgeBasePanel />
+      case 'boxArt': return <BoxArtAnalyzerPanel />
+      case 'comparison': return <RecipeComparisonPanel />
     }
   }
 
@@ -116,12 +93,22 @@ export default function App() {
         </div>
 
         <nav className="flex-1 overflow-y-auto px-3 py-4">
-          <NavGroup title="Phase 1 — MVP" items={NAV.filter((n) => n.phase === 1)} active={active} onSelect={setActive} />
-          <NavGroup title="Phase 2 — Next" items={NAV.filter((n) => n.phase === 2)} active={active} onSelect={setActive} />
+          <NavGroup title="Core Modules" items={NAV.filter((n) => n.phase === 1)} active={active} onSelect={setActive} />
+          <NavGroup title="Phase 2 Modules" items={NAV.filter((n) => n.phase === 2)} active={active} onSelect={setActive} />
+          <NavGroup title="Phase 3 Modules" items={NAV.filter((n) => n.phase === 3)} active={active} onSelect={setActive} />
         </nav>
 
         <div className="border-t border-forge-border px-5 py-4">
-          <div className="flex items-center gap-2">
+          <label className="block text-[10px] uppercase tracking-wide text-forge-mute">Preferred Paint Range</label>
+          <select
+            value={preferredRange}
+            onChange={(e) => setPreferredRange(e.target.value as typeof preferredRange)}
+            className="mt-1 w-full rounded border border-forge-border bg-forge-panel2 px-2 py-1.5 text-xs text-forge-ink focus:border-forge-copper"
+          >
+            {PAINT_RANGES.map((r) => <option key={r} value={r}>{r}</option>)}
+          </select>
+
+          <div className="mt-3 flex items-center gap-2">
             <span className="h-6 w-6 rounded border border-forge-border" style={{ backgroundColor: hslToHex(hsl) }} />
             <span className="font-mono text-xs text-forge-mute">{hslToHex(hsl)}</span>
           </div>

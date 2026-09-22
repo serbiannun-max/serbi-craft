@@ -36,7 +36,7 @@ npm run build
 npm run preview
 ```
 
-## Phase 1 + Phase 2 (this build)
+## Phase 1 + Phase 2 + Phase 3 (this build)
 
 **Core modules (Phase 1):**
 - **Color Wheel** — click/drag an HSL wheel, or type exact HEX/RGB/HSL values.
@@ -72,7 +72,64 @@ npm run preview
   recommends what it does (traditional pigment wheel vs. RGB wheel, why skin
   shadows go through purple, how NMM contrast works, etc.).
 
-All ten modules are reachable from the sidebar; nothing is stubbed anymore.
+All ten Phase 1/2 modules are reachable from the sidebar; nothing is stubbed.
+
+**Phase 3 additions (this update) — highest priority first:**
+
+- **Paint Database**: three new dedicated catalogs — Vallejo Model Color,
+  Vallejo Game Color, Vallejo Xpress Color (`src/data/paints/`) — each paint
+  carrying name, manufacturer, hex, and computed Hue/Saturation/**Value**
+  (`hexToHsv` in `colorMath.ts`, distinct from the HSL used everywhere else
+  in the app). A new **Preferred Paint Range** global setting (sidebar
+  footer, persisted to `localStorage`) picks which of the 7 total ranges
+  (the 3 new Vallejo lines, plus Citadel/Army Painter/AK Interactive/Two
+  Thin Coats) recipes resolve against. **Honesty note:** these three new
+  catalogs are curated, plausible reference data — this project has no
+  internet access to verify every name against Vallejo's current official
+  catalog, so each file says so explicitly and recommends checking against
+  a physical chip or vallejocolor.com. Treat them the same way as the
+  original `paintDatabase.json`'s existing disclaimer, just newer.
+- **Collection Manager**: now tracks ownership across the full 7-range
+  catalog (previously 5). The Paint Brands module's new "Recipe in Your
+  Preferred Range" section prefers and highlights owned paints, falls back
+  to the closest **owned substitute** when nothing owned is close, and
+  beyond that suggests a **two-paint mixing ratio** (10%-step search across
+  every pair of owned paints) when even the best single substitute isn't
+  close enough.
+- **Paint Analyzer**: click anywhere on an uploaded image to pick that exact
+  pixel's HEX/RGB/HSL and see its complementary/analogous/triadic/split-
+  complementary harmonies (reuses the existing `HarmonyDisplay`). Palette
+  extraction now toggles between top 3/5/8 colors, labeled Dominant/
+  Secondary/Accent by rank, and shows an inline "Automatic Miniature
+  Recipe" ladder for whichever color you last picked or extracted.
+- **Box Art Analyzer** (new module): click a point on a reference photo and
+  tag it as Armor / Cloth / Skin / Leather / Gold / Steel. Skin routes
+  through the Skin Tones presets, Gold/Steel through the NMM Gold/Steel
+  ladders, everything else through the core Miniature Advisor engine —
+  each tagged point gets its own expandable recipe.
+- **Recipe Comparison** (new module): upload two photos and compare their
+  average hue, saturation, brightness, and a contrast proxy (stddev of
+  per-pixel lightness), with plain-language correction suggestions.
+- **Workbench Card**: now also shows the nearest paint **name** per ladder
+  step in your Preferred Range, and exports as **PNG** in addition to the
+  existing PDF/print.
+- **Knowledge Base**: recategorized (Color Temperature, NMM Gold, and NMM
+  Steel are now separate categories) and extended with **Materials** and
+  **Golden Demon style techniques** entries (edge highlighting, zenithal
+  priming, glazing vs. layering).
+
+**Architecture notes:**
+- `src/utils/imageSampling.ts` and `src/components/ImageDropZone.tsx` were
+  factored out of the original Paint Analyzer so Recipe Comparison, Box Art
+  Analyzer, and Paint Analyzer itself all share one canvas-sampling
+  implementation and one upload UI, rather than three copies of the same
+  logic — the only refactor made in this pass, and it didn't change any
+  existing module's behavior.
+- Every new module reuses the existing engine rather than reimplementing
+  it: `getPaintLadder`/`getUnderpaintingOptions` (Box Art Analyzer, Paint
+  Analyzer's inline recipe), `findNearestPaints`/the new
+  `findNearestInRange` (Paint Brands, Workbench Card), and the Collection
+  Manager's owned-paint set (Paint Brands' substitute/mixing logic).
 
 ## Why the color math isn't a straight complement
 
@@ -106,12 +163,27 @@ src/
     SwatchCard.tsx, TemperatureBlock.tsx, MiniColorWheel.tsx
     panels/                one component per nav module (10 modules total)
   App.tsx                   sidebar nav + shared selected-color state
+  context/
+    SettingsContext.tsx        global Preferred Paint Range setting (localStorage-backed)
+
+Phase 3 additions to src/:
+  utils/
+    paintCatalog.ts             unified 7-range paint catalog (3 Vallejo + 4 legacy brands)
+    imageSampling.ts              shared canvas pixel sampling (factored out, reused by 3 modules)
+    pixelPick.ts                    exact full-resolution single-pixel color picking
+    imageAnalysis.ts                  per-image hue/sat/brightness/contrast stats (Recipe Comparison)
+  data/paints/
+    vallejoModelColor.json, vallejoGameColor.json, vallejoXpressColor.json
+  components/
+    ImageDropZone.tsx            shared drag-and-drop upload UI (Paint Analyzer, Box Art, Comparison)
+    panels/BoxArtAnalyzerPanel.tsx, panels/RecipeComparisonPanel.tsx
 
 src-tauri/                  native desktop shell (Rust, Tauri v2)
   src/main.rs, lib.rs, commands.rs   app bootstrap + example command
   tauri.conf.json                       window, build hooks, Windows installer config
   capabilities/default.json               permission grants for the main window
   icons/                                     app icon set (incl. Windows .ico)
+
 
 .github/workflows/build-windows.yml   CI: builds the real .exe/.msi on windows-latest
 
